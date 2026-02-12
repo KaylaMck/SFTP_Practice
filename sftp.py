@@ -38,3 +38,8 @@ duckdb.query("SELECT state, COUNT(*) as customer_count FROM customers GROUP BY s
 
 # Find all customers in Denver
 duckdb.query("SELECT * FROM customers WHERE city = 'Denver'").show()
+
+sftp_file.close()
+sftp.close()
+transport.close()
+print("All connections closed.")
