@@ -34,7 +34,12 @@ print(customers.head())
 
 duckdb.query("SELECT * FROM customers").show()
 # How many customers per state?
-duckdb.query("SELECT state, COUNT(*) as customer_count FROM customers GROUP BY state").show()
+duckdb.query("""
+    SELECT state, COUNT(*) as customer_count 
+    FROM customers 
+    GROUP BY state
+    ORDER BY customer_count DESC
+""").show()
 
 # Find all customers in Denver
 duckdb.query("SELECT * FROM customers WHERE city = 'Denver'").show()
