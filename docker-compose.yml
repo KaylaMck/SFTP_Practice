@@ -1,0 +1,17 @@
+services:
+
+  sftpgo:
+    image: drakkan/sftpgo:latest
+    container_name: sftpgo_server
+    ports:
+      - "8080:8080" # Web Admin
+      - "2022:2022" # SFTP
+    environment:
+      - SFTPGO_DEFAULT_ADMIN_USERNAME=admin
+      - SFTPGO_DEFAULT_ADMIN_PASSWORD=password
+    volumes:
+    - sftpgo_data:/srv/sftpgo/data
+    restart: unless-stopped
+
+volumes:
+  sftpgo_data:
